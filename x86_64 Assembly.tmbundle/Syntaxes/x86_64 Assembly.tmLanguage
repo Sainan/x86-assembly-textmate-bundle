@@ -83,45 +83,99 @@
 			<array>
 				<dict>
 					<key>match</key>
-					<string>\b((([0-9\_]+\.[0-9\_]*)(e[+-]?[0-9\_]+)?|\.?[0-9\_]+e[+-]?[0-9\_]+))\b</string>
+					<string>(?i)\b0[by](?:[01][01_]*)\.(?:(?:[01][01_]*)?(?:p[+-]?(?:[0-9][0-9_]*))?\b)?</string>
 					<key>name</key>
-					<string>constant.numeric.floating-point</string>
+					<string>constant.numeric.binary.floating-point.asm.x86_64</string>
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>\b([0-9\_]+p[0-9\_]*)\b</string>
+					<string>(?i)\b0[by](?:[01][01_]*)(?:p[+-]?(?:[0-9][0-9_]*))\b</string>
 					<key>name</key>
-					<string>constant.numeric.packed-bcd</string>
+					<string>constant.numeric.binary.floating-point.asm.x86_64</string>
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>(\$0[0-9a-f]+)\b</string>
+					<string>(?i)\b0[oq](?:[0-7][0-7_]*)\.(?:(?:[0-7][0-7_]*)?(?:p[+-]?(?:[0-9][0-9_]*))?\b)?</string>
 					<key>name</key>
-					<string>constant.numeric.literal</string>
+					<string>constant.numeric.octal.floating-point.asm.x86_64</string>
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>\b((0[by][01\_]+)|([01\_]+[by]))\b</string>
+					<string>(?i)\b0[oq](?:[0-7][0-7_]*)(?:p[+-]?(?:[0-9][0-9_]*))\b</string>
 					<key>name</key>
-					<string>constant.numeric.bin</string>
+					<string>constant.numeric.octal.floating-point.asm.x86_64</string>
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>\b((0[oq][0-7\_]+)|([0-7\_]+[oq]))\b</string>
+					<string>(?i)\b(?:0[dt])?(?:[0-9][0-9_]*)\.(?:(?:[0-9][0-9_]*)?(?:e[+-]?(?:[0-9][0-9_]*))?\b)?</string>
 					<key>name</key>
-					<string>constant.numeric.oct</string>
+					<string>constant.numeric.decimal.floating-point.asm.x86_64</string>
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>\b((0d[0-9\_]+)|([0-9\_]+d?))\b</string>
+					<string>(?i)\b(?:[0-9][0-9_]*)(?:e[+-]?(?:[0-9][0-9_]*))\b</string>
 					<key>name</key>
-					<string>constant.numeric.dec</string>
+					<string>constant.numeric.decimal.floating-point.asm.x86_64</string>
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>\b((0[xh][0-9a-fA-F\_]+)|([0-9a-fA-F\_]+[hH]))\b</string>
+					<string>(?i)\b(?:[0-9][0-9_]*)p(?:[0-9][0-9_]*)?\b</string>
 					<key>name</key>
-					<string>constant.numeric.hex</string>
+					<string>constant.numeric.decimal.packed-bcd.asm.x86_64</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>(?i)\b0[xh](?:[[:xdigit:]][[:xdigit:]_]*)\.(?:(?:[[:xdigit:]][[:xdigit:]_]*)?(?:p[+-]?(?:[0-9][0-9_]*))?\b)?</string>
+					<key>name</key>
+					<string>constant.numeric.hex.floating-point.asm.x86_64</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>(?i)\b0[xh](?:[[:xdigit:]][[:xdigit:]_]*)(?:p[+-]?(?:[0-9][0-9_]*))\b</string>
+					<key>name</key>
+					<string>constant.numeric.hex.floating-point.asm.x86_64</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>(?i)\$[0-9]\_?(?:[[:xdigit:]][[:xdigit:]_]*)?\.(?:(?:[[:xdigit:]][[:xdigit:]_]*)?(?:p[+-]?(?:[0-9][0-9_]*))?\b)?</string>
+					<key>name</key>
+					<string>constant.numeric.hex.floating-point.asm.x86_64</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>(?i)\$[0-9]\_?(?:[[:xdigit:]][[:xdigit:]_]*)(?:p[+-]?(?:[0-9][0-9_]*))\b</string>
+					<key>name</key>
+					<string>constant.numeric.hex.floating-point.asm.x86_64</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>(?i)\b(?:(?:0[by](?:[01][01_]*))|(?:(?:[01][01_]*)[by]))\b</string>
+					<key>name</key>
+					<string>constant.numeric.binary.asm.x86_64</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>(?i)\b(?:(?:0[oq](?:[0-7][0-7_]*))|(?:(?:[0-7][0-7_]*)[oq]))\b</string>
+					<key>name</key>
+					<string>constant.numeric.octal.asm.x86_64</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>(?i)\b(?:(?:0[dt](?:[0-9][0-9_]*))|(?:(?:[0-9][0-9_]*)[dt]?))\b</string>
+					<key>name</key>
+					<string>constant.numeric.decimal.asm.x86_64</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>(?i)(?:\$[0-9]\_?(?:[[:xdigit:]][[:xdigit:]_]*)?)\b</string>
+					<key>name</key>
+					<string>constant.numeric.hex.asm.x86_64</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>(?i)\b(?:(?:0[xh](?:[[:xdigit:]][[:xdigit:]_]*))|(?:(?:[[:xdigit:]][[:xdigit:]_]*)[hxHX]))\b</string>
+					<key>name</key>
+					<string>constant.numeric.hex.asm.x86_64</string>
 				</dict>
 			</array>
 		</dict>

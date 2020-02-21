@@ -17,20 +17,44 @@ patterns:
 repository:
   constants:
     patterns:
-    - name: constant.numeric.floating-point
-      match: \b((([0-9\_]+\.[0-9\_]*)(e[+-]?[0-9\_]+)?|\.?[0-9\_]+e[+-]?[0-9\_]+))\b
-    - name: constant.numeric.packed-bcd
-      match: \b([0-9\_]+p[0-9\_]*)\b
-    - name: constant.numeric.literal
-      match: (\$0[0-9a-f]+)\b
-    - name: constant.numeric.bin
-      match: \b((0[by][01\_]+)|([01\_]+[by]))\b
-    - name: constant.numeric.oct
-      match: \b((0[oq][0-7\_]+)|([0-7\_]+[oq]))\b
-    - name: constant.numeric.dec
-      match: \b((0d[0-9\_]+)|([0-9\_]+d?))\b
-    - name: constant.numeric.hex
-      match: \b((0[xh][0-9a-fA-F\_]+)|([0-9a-fA-F\_]+[hH]))\b
+    # floating-point
+    # binary
+    - name: constant.numeric.binary.floating-point.asm.x86_64
+      match: '(?i)\b0[by](?:[01][01_]*)\.(?:(?:[01][01_]*)?(?:p[+-]?(?:[0-9][0-9_]*))?\b)?'      
+    - name: constant.numeric.binary.floating-point.asm.x86_64
+      match: '(?i)\b0[by](?:[01][01_]*)(?:p[+-]?(?:[0-9][0-9_]*))\b'      
+    # octal
+    - name: constant.numeric.octal.floating-point.asm.x86_64
+      match: '(?i)\b0[oq](?:[0-7][0-7_]*)\.(?:(?:[0-7][0-7_]*)?(?:p[+-]?(?:[0-9][0-9_]*))?\b)?'      
+    - name: constant.numeric.octal.floating-point.asm.x86_64
+      match: '(?i)\b0[oq](?:[0-7][0-7_]*)(?:p[+-]?(?:[0-9][0-9_]*))\b'      
+    # decimal
+    - name: constant.numeric.decimal.floating-point.asm.x86_64
+      match: '(?i)\b(?:0[dt])?(?:[0-9][0-9_]*)\.(?:(?:[0-9][0-9_]*)?(?:e[+-]?(?:[0-9][0-9_]*))?\b)?'      
+    - name: constant.numeric.decimal.floating-point.asm.x86_64
+      match: '(?i)\b(?:[0-9][0-9_]*)(?:e[+-]?(?:[0-9][0-9_]*))\b'      
+    - name: constant.numeric.decimal.packed-bcd.asm.x86_64
+      match: '(?i)\b(?:[0-9][0-9_]*)p(?:[0-9][0-9_]*)?\b'      
+    # hex
+    - name: constant.numeric.hex.floating-point.asm.x86_64
+      match: '(?i)\b0[xh](?:[[:xdigit:]][[:xdigit:]_]*)\.(?:(?:[[:xdigit:]][[:xdigit:]_]*)?(?:p[+-]?(?:[0-9][0-9_]*))?\b)?'      
+    - name: constant.numeric.hex.floating-point.asm.x86_64
+      match: '(?i)\b0[xh](?:[[:xdigit:]][[:xdigit:]_]*)(?:p[+-]?(?:[0-9][0-9_]*))\b'      
+    - name: constant.numeric.hex.floating-point.asm.x86_64
+      match: '(?i)\$[0-9]\_?(?:[[:xdigit:]][[:xdigit:]_]*)?\.(?:(?:[[:xdigit:]][[:xdigit:]_]*)?(?:p[+-]?(?:[0-9][0-9_]*))?\b)?'      
+    - name: constant.numeric.hex.floating-point.asm.x86_64
+      match: '(?i)\$[0-9]\_?(?:[[:xdigit:]][[:xdigit:]_]*)(?:p[+-]?(?:[0-9][0-9_]*))\b'      
+    # integers
+    - name: constant.numeric.binary.asm.x86_64
+      match: '(?i)\b(?:(?:0[by](?:[01][01_]*))|(?:(?:[01][01_]*)[by]))\b'      
+    - name: constant.numeric.octal.asm.x86_64
+      match: '(?i)\b(?:(?:0[oq](?:[0-7][0-7_]*))|(?:(?:[0-7][0-7_]*)[oq]))\b'      
+    - name: constant.numeric.decimal.asm.x86_64
+      match: '(?i)\b(?:(?:0[dt](?:[0-9][0-9_]*))|(?:(?:[0-9][0-9_]*)[dt]?))\b'      
+    - name: constant.numeric.hex.asm.x86_64
+      match: '(?i)(?:\$[0-9]\_?(?:[[:xdigit:]][[:xdigit:]_]*)?)\b'      
+    - name: constant.numeric.hex.asm.x86_64
+      match: '(?i)\b(?:(?:0[xh](?:[[:xdigit:]][[:xdigit:]_]*))|(?:(?:[[:xdigit:]][[:xdigit:]_]*)[hxHX]))\b'      
 
   entities:
     patterns:
