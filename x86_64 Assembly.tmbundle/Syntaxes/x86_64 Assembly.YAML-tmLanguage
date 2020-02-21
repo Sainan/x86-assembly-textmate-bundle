@@ -172,32 +172,34 @@ repository:
 
   registers:
     patterns:
-    - name: constant.language.registers.general-purpose
-      match: \b%?([abcd][hl]|[er]?[abcd]x|[er]?(di|si|bp|sp)|dil|sil|bpl|spl|r(8|9|1[0-5])[bdlw]?)\b
-    - name: constant.language.registers.segment
-      match: \b%?([cdefgs]s)\b
-    - name: constant.language.registers.flags
-      match: \b%?([er]?flags)\b
-    - name: constant.language.registers.instruction-pointer
-      match: \b%?([er]?ip)\b
-    - name: constant.language.registers.control
-      match: \b%?(cr[02-4])\b
-    - name: constant.language.registers.mmx
-      match: \b%?((mm|st|fpr)[0-7])\b
-    - name: constant.language.registers.sse_avx
-      match: \b%?([xy]mm([0-9]|1[0-5])|mxcsr)\b
-    - name: constant.language.registers.avx512
-      match: \b%?(zmm([12]?[0-9]|30|31))\b
-    - name: constant.language.registers.memory-protection
-      match: \b%?(bnd([0-3]|cfg[su]|status))\b
-    - name: constant.language.registers.system-table-pointer
-      match: \b%?(([gil]dt)r?|tr)\b
-    - name: constant.language.registers.debug
-      match: \b%?(dr[0-367])\b
-    - name: constant.language.registers.amd
-      match: \b%?(cr8|dr([89]|1[0-5])|efer|tpr|syscfg)\b
-    - name: invalid.deprecated
-      match: \b%?(db[0-367]|t[67]|tr[3-7]|st)\b
+    - name: constant.language.register.general-purpose.asm.x86_64
+      match: '(?i)\b(?:[abcd][hl]|[er]?[abcd]x|[er]?(?:di|si|bp|sp)|dil|sil|bpl|spl|r(?:8|9|1[0-5])[bdlw]?)\b'
+    - name: constant.language.register.segment.asm.x86_64
+      match: '(?i)\b(?:[cdefgs]s)\b'
+    - name: constant.language.register.flags.asm.x86_64
+      match: '(?i)\b(?:[er]?flags)\b'
+    - name: constant.language.register.instruction-pointer.asm.x86_64
+      match: '(?i)\b(?:[er]?ip)\b'
+    - name: constant.language.register.control.asm.x86_64
+      match: '(?i)\b(?:cr[02-4])\b'
+    - name: constant.language.register.mmx.asm.x86_64
+      match: '(?i)\b(?:(?:mm|st|fpr)[0-7])\b'
+    - name: constant.language.register.sse_avx.asm.x86_64
+      match: '(?i)\b(?:[xy]mm(?:[0-9]|1[0-5])|mxcsr)\b'
+    - name: constant.language.register.avx512.asm.x86_64
+      match: '(?i)\b(?:zmm(?:[12]?[0-9]|30|31))\b'
+    - name: constant.language.register.memory-protection.asm.x86_64
+      match: '(?i)\b(?:bnd(?:[0-3]|cfg[su]|status))\b'
+    - name: constant.language.register.system-table-pointer.asm.x86_64
+      match: '(?i)\b(?:(?:[gil]dt)r?|tr)\b'
+    - name: constant.language.register.debug.asm.x86_64
+      match: '(?i)\b(?:dr[0-367])\b'
+    - name: constant.language.register.amd.asm.x86_64
+      match: '(?i)\b(?:cr8|dr(?:[89]|1[0-5])|efer|tpr|syscfg)\b'
+    - name: invalid.deprecated.constant.language.register.asm.x86_64
+      match: '(?i)\b(?:db[0-367]|t[67]|tr[3-7]|st)\b'
+    - name: constant.language.register.general-purpose.alias.asm.x86_64
+      match: '(?i)\b[xy]mm(?:1[6-9]|2[0-9]|3[01])\b'
 
   mnemonics: # see valid.asm for references
     patterns:

@@ -1534,81 +1534,87 @@
 			<array>
 				<dict>
 					<key>match</key>
-					<string>\b%?([abcd][hl]|[er]?[abcd]x|[er]?(di|si|bp|sp)|dil|sil|bpl|spl|r(8|9|1[0-5])[bdlw]?)\b</string>
+					<string>(?i)\b(?:[abcd][hl]|[er]?[abcd]x|[er]?(?:di|si|bp|sp)|dil|sil|bpl|spl|r(?:8|9|1[0-5])[bdlw]?)\b</string>
 					<key>name</key>
-					<string>constant.language.registers.general-purpose</string>
+					<string>constant.language.register.general-purpose.asm.x86_64</string>
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>\b%?([cdefgs]s)\b</string>
+					<string>(?i)\b(?:[cdefgs]s)\b</string>
 					<key>name</key>
-					<string>constant.language.registers.segment</string>
+					<string>constant.language.register.segment.asm.x86_64</string>
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>\b%?([er]?flags)\b</string>
+					<string>(?i)\b(?:[er]?flags)\b</string>
 					<key>name</key>
-					<string>constant.language.registers.flags</string>
+					<string>constant.language.register.flags.asm.x86_64</string>
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>\b%?([er]?ip)\b</string>
+					<string>(?i)\b(?:[er]?ip)\b</string>
 					<key>name</key>
-					<string>constant.language.registers.instruction-pointer</string>
+					<string>constant.language.register.instruction-pointer.asm.x86_64</string>
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>\b%?(cr[02-4])\b</string>
+					<string>(?i)\b(?:cr[02-4])\b</string>
 					<key>name</key>
-					<string>constant.language.registers.control</string>
+					<string>constant.language.register.control.asm.x86_64</string>
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>\b%?((mm|st|fpr)[0-7])\b</string>
+					<string>(?i)\b(?:(?:mm|st|fpr)[0-7])\b</string>
 					<key>name</key>
-					<string>constant.language.registers.mmx</string>
+					<string>constant.language.register.mmx.asm.x86_64</string>
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>\b%?([xy]mm([0-9]|1[0-5])|mxcsr)\b</string>
+					<string>(?i)\b(?:[xy]mm(?:[0-9]|1[0-5])|mxcsr)\b</string>
 					<key>name</key>
-					<string>constant.language.registers.sse_avx</string>
+					<string>constant.language.register.sse_avx.asm.x86_64</string>
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>\b%?(zmm([12]?[0-9]|30|31))\b</string>
+					<string>(?i)\b(?:zmm(?:[12]?[0-9]|30|31))\b</string>
 					<key>name</key>
-					<string>constant.language.registers.avx512</string>
+					<string>constant.language.register.avx512.asm.x86_64</string>
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>\b%?(bnd([0-3]|cfg[su]|status))\b</string>
+					<string>(?i)\b(?:bnd(?:[0-3]|cfg[su]|status))\b</string>
 					<key>name</key>
-					<string>constant.language.registers.memory-protection</string>
+					<string>constant.language.register.memory-protection.asm.x86_64</string>
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>\b%?(([gil]dt)r?|tr)\b</string>
+					<string>(?i)\b(?:(?:[gil]dt)r?|tr)\b</string>
 					<key>name</key>
-					<string>constant.language.registers.system-table-pointer</string>
+					<string>constant.language.register.system-table-pointer.asm.x86_64</string>
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>\b%?(dr[0-367])\b</string>
+					<string>(?i)\b(?:dr[0-367])\b</string>
 					<key>name</key>
-					<string>constant.language.registers.debug</string>
+					<string>constant.language.register.debug.asm.x86_64</string>
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>\b%?(cr8|dr([89]|1[0-5])|efer|tpr|syscfg)\b</string>
+					<string>(?i)\b(?:cr8|dr(?:[89]|1[0-5])|efer|tpr|syscfg)\b</string>
 					<key>name</key>
-					<string>constant.language.registers.amd</string>
+					<string>constant.language.register.amd.asm.x86_64</string>
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>\b%?(db[0-367]|t[67]|tr[3-7]|st)\b</string>
+					<string>(?i)\b(?:db[0-367]|t[67]|tr[3-7]|st)\b</string>
 					<key>name</key>
-					<string>invalid.deprecated</string>
+					<string>invalid.deprecated.constant.language.register.asm.x86_64</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>(?i)\b[xy]mm(?:1[6-9]|2[0-9]|3[01])\b</string>
+					<key>name</key>
+					<string>constant.language.register.general-purpose.alias.asm.x86_64</string>
 				</dict>
 			</array>
 		</dict>
