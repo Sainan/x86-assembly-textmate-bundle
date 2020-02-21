@@ -60,16 +60,47 @@ repository:
     patterns:
     - name: entity.name.section
       match: '((section|segment)\s+)?\.((ro)?data|bss|text)'
-    - name: entity.name.function
-      match: '^\s*(%%)?(\w|[\._?])(\w|[_$#@~\.?])*\:'
-    - name: invalid.entity.name.function
-      match: '^\s*([$@~])(\w|[_$#@~\.?])*\:'
-    - name: entity.label.special
-      match: \$
     - name: entity.directive
       match: ^\.?(globa?l|extern)\b
     - name: text.variable
       match: (\$\w+)\b
+    #labels
+    - name: entity.name.function.asm.x86_64
+      match: '(\.\.@)((?:[[:alpha:]_?](?:[[:alnum:]_$#@~.?]*)))(?:(\:)?|\b)'
+      captures:
+        '1': {name: punctuation.separator.asm.x86_64 storage.modifier.asm.x86_64}
+        '2': {name: entity.name.constant.special.asm.x86_64}
+        '3': {name: punctuation.separator.asm.x86_64}
+    - name: entity.name.function.asm.x86_64
+      match: '(?:(\.)?|\b)((?:[[:alpha:]_?](?:[[:alnum:]_$#@~.?]*)))(?:(\:)?|\b)'
+      captures:
+        '1': {name: punctuation.separator.asm.x86_64 storage.modifier.asm.x86_64}
+        '2': {name: entity.name.constant.asm.x86_64}
+        '3': {name: punctuation.separator.asm.x86_64}
+    - name: entity.name.function.asm.x86_64
+      match: '(\.)([0-9]+(?:[[:alnum:]_$#@~.?]*))(?:(\:)?|\b)'
+      captures:
+        '1': {name: punctuation.separator.asm.x86_64 storage.modifier.asm.x86_64}
+        '2': {name: entity.name.constant.asm.x86_64}
+        '3': {name: punctuation.separator.asm.x86_64}
+    - name: entity.name.function.asm.x86_64
+      match: '(?:(\.)?|\b)([0-9$@~](?:[[:alnum:]_$#@~.?]*))(?:(\:)?|\b)'
+      captures:
+        '1': {name: punctuation.separator.asm.x86_64 storage.modifier.asm.x86_64}
+        '2': {name: invalid.illegal.entity.name.constant.asm.x86_64}
+        '3': {name: punctuation.separator.asm.x86_64}
+    - name: invalid.illegal.meta.preprocessor.asm.x86_64
+      match: '((%)(\d+))'
+      captures:
+        #'1':{name:  meta.preprocessor.asm.x86_64}
+        '2': {name: punctuation.definition.variable.preprocessor.asm.x86_64 keyword.control.preprocessor.asm.x86_64}
+        '3': {name: variable.other.preprocessor.asm.x86_64}
+    - name: invalid.illegal.meta.preprocessor.asm.x86_64
+      match: '((%%)((?:[[:alpha:]_?](?:[[:alnum:]_$#@~.?]*)))(?:(\:)?|\b))'
+      captures:
+        '2': {name: punctuation.definition.keyword.preprocessor.asm.x86_64 keyword.control.preprocessor.asm.x86_64}
+        '3': {name: entity.name.constant.special.asm.x86_64}
+        '4': {name: punctuation.separator.asm.x86_64}
 
   support:
     patterns:
