@@ -219,26 +219,38 @@ repository:
 
   strings:
     patterns:
-    - name: string.quoted.asm
-      begin: '["''`]'
+    - name: string.quoted.double.asm
+      begin: '"'
       beginCaptures:
         '0': { name: punctuation.definition.string.begin.asm }
-      end: '["''`]'
+      end: '"'
       endCaptures:
         '0': { name: punctuation.definition.string.end.asm }
       patterns:
       - include: '#string_escaped_char'
       - include: '#string_placeholder' #where are these patterns?
-    
-    - name: string.quoted.single.c
-      begin: "'"
+
+    - name: string.quoted.single.asm
+      begin: ''''
       beginCaptures:
-        '0': {name: punctuation.definition.string.begin.c}
-      end: "'"
+        '0': { name: punctuation.definition.string.begin.asm }
+      end: ''''
       endCaptures:
-        '0': {name: punctuation.definition.string.end.c}
+        '0': { name: punctuation.definition.string.end.asm }
       patterns:
       - include: '#string_escaped_char'
+      - include: '#string_placeholder' #where are these patterns?
+
+    - name: string.quoted.backquote.asm
+      begin: '`'
+      beginCaptures:
+        '0': { name: punctuation.definition.string.begin.asm }
+      end: '`'
+      endCaptures:
+        '0': { name: punctuation.definition.string.end.asm }
+      patterns:
+      - include: '#string_escaped_char'
+      - include: '#string_placeholder' #where are these patterns?
 
   registers:
     patterns:

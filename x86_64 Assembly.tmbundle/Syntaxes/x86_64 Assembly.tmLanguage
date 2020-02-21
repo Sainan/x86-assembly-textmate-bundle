@@ -1800,7 +1800,7 @@
 			<array>
 				<dict>
 					<key>begin</key>
-					<string>["'`]</string>
+					<string>"</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>0</key>
@@ -1810,7 +1810,7 @@
 						</dict>
 					</dict>
 					<key>end</key>
-					<string>["'`]</string>
+					<string>"</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>0</key>
@@ -1820,7 +1820,7 @@
 						</dict>
 					</dict>
 					<key>name</key>
-					<string>string.quoted.asm</string>
+					<string>string.quoted.double.asm</string>
 					<key>patterns</key>
 					<array>
 						<dict>
@@ -1841,7 +1841,7 @@
 						<key>0</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.definition.string.begin.c</string>
+							<string>punctuation.definition.string.begin.asm</string>
 						</dict>
 					</dict>
 					<key>end</key>
@@ -1851,16 +1851,55 @@
 						<key>0</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.definition.string.end.c</string>
+							<string>punctuation.definition.string.end.asm</string>
 						</dict>
 					</dict>
 					<key>name</key>
-					<string>string.quoted.single.c</string>
+					<string>string.quoted.single.asm</string>
 					<key>patterns</key>
 					<array>
 						<dict>
 							<key>include</key>
 							<string>#string_escaped_char</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#string_placeholder</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>`</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.string.begin.asm</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>`</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.string.end.asm</string>
+						</dict>
+					</dict>
+					<key>name</key>
+					<string>string.quoted.backquote.asm</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#string_escaped_char</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#string_placeholder</string>
 						</dict>
 					</array>
 				</dict>
