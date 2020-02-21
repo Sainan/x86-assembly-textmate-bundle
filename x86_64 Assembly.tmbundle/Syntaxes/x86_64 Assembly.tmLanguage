@@ -28,11 +28,11 @@
 		</dict>
 		<dict>
 			<key>include</key>
-			<string>#entities</string>
+			<string>#support</string>
 		</dict>
 		<dict>
 			<key>include</key>
-			<string>#support</string>
+			<string>#entities</string>
 		</dict>
 		<dict>
 			<key>include</key>
@@ -1872,33 +1872,153 @@
 			<array>
 				<dict>
 					<key>match</key>
-					<string>(?i)\b(s?byte|([doqtyz]|dq|s[dq]?)?word|(d|res)[bdoqtwyz]?|ddq|incbin|equ|times|(end|i)?struc|at|iend)\b</string>
+					<string>(?i)\b(?:s?byte|(?:[doqtyz]|dq|s[dq]?)?word|(?:d|res)[bdoqtwyz]|ddq)\b</string>
 					<key>name</key>
-					<string>support.type.asm</string>
+					<string>storage.type.asm.x86_64</string>
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>(?i)\b(\.?(alignb?|bits|cpu|fpu)|use(16|32|64))\b</string>
+					<string>(?i)\b(?:incbin|equ|times)\b</string>
 					<key>name</key>
-					<string>support.directive.asm</string>
+					<string>support.function.asm.x86_64</string>
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>\b(strict|nosplit|near|far|abs|rel|seg|wrt|absolute|common)\b</string>
+					<string>(?i)\b(?:strict|nosplit|near|far|abs|rel)\b</string>
 					<key>name</key>
-					<string>support.modifier.asm</string>
+					<string>storage.modifier.asm.x86_64</string>
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>\b([ao](16|32|64))\b</string>
+					<string>(?i)\b(?:[ao](?:16|32|64))\b</string>
 					<key>name</key>
-					<string>support.prefix.asm</string>
+					<string>storage.modifier.prefix.asm.x86_64</string>
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>\b__(utf((16|32)([lb]e)?)|float(8|16|32|64|80[me]|128[lh])|Infinity|[QS]?NaN)__\b</string>
+					<string>(?i)\b(?:rep(?:n?[ez])?|lock|xacquire|xrelease|(?:no)?bnd)\b</string>
 					<key>name</key>
-					<string>support.function.asm</string>
+					<string>storage.modifier.prefix.asm.x86_64</string>
+				</dict>
+				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>storage.modifier.prefix.vex.asm.x86_64</string>
+						</dict>
+					</dict>
+					<key>match</key>
+					<string>{(vex[23]|evex)}</string>
+				</dict>
+				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>storage.modifier.opmask.asm.x86_64</string>
+						</dict>
+					</dict>
+					<key>match</key>
+					<string>{(k[1-7])}</string>
+				</dict>
+				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>storage.modifier.precision.asm.x86_64</string>
+						</dict>
+					</dict>
+					<key>match</key>
+					<string>{(1to(?:8|16))}</string>
+				</dict>
+				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>storage.modifier.rounding.asm.x86_64</string>
+						</dict>
+					</dict>
+					<key>match</key>
+					<string>{(z|(?:r[nudz]-)?sae)}</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\.\.(?:start|imagebase|tlvp|got(?:pc(?:rel)?|(?:tp)?off)?|plt|sym|tlsie)\b</string>
+					<key>name</key>
+					<string>support.constant.asm.x86_64</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\b__(?:utf(?:(?:16|32)(?:[lb]e)?)|float(?:8|16|32|64|80[me]|128[lh])|Infinity|[QS]?NaN)__\b</string>
+					<key>name</key>
+					<string>support.function.asm.x86_64</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\b__NASM_(?:MAJOR|(?:SUB)?MINOR|SNAPSHOT|VER(?:SION_ID)?)__\b</string>
+					<key>name</key>
+					<string>support.function.asm.x86_64</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\b___NASM_PATCHLEVEL__\b</string>
+					<key>name</key>
+					<string>support.function.asm.x86_64</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\b__(?:FILE|LINE|BITS|OUTPUT_FORMAT)__\b</string>
+					<key>name</key>
+					<string>support.function.asm.x86_64</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\b__(?:(?:UTC_)?(?:DATE|TIME)(?:_NUM)?|POSIX_TIME)__\b</string>
+					<key>name</key>
+					<string>support.function.asm.x86_64</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\b__USE_(?:ALTREG|SMARTALIGN|FP|IFUNC)__\b</string>
+					<key>name</key>
+					<string>support.function.asm.x86_64</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\b__PASS__\b</string>
+					<key>name</key>
+					<string>invalid.deprecated.support.constant.altreg.asm.x86_64</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\b__ALIGNMODE__\b</string>
+					<key>name</key>
+					<string>support.constant.smartalign.asm.x86_64</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\b(?:Inf|[QS]?NaN)\b</string>
+					<key>name</key>
+					<string>support.constant.fp.asm.x86_64</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\b(?:float(?:8|16|32|64|80[me]|128[lh]))\b</string>
+					<key>name</key>
+					<string>support.function.fp.asm.x86_64</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>(?i)\bilog2(?:[ewfc]|[fc]w)?\b</string>
+					<key>name</key>
+					<string>support.function.ifunc.asm.x86_64</string>
 				</dict>
 			</array>
 		</dict>

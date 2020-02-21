@@ -8,8 +8,8 @@ patterns:
 - include: '#registers'
 - include: '#mnemonics'
 - include: '#constants'
-- include: '#entities'
 - include: '#support'
+- include: '#entities'
 - include: '#comments'
 - include: '#preprocessor'
 - include: '#strings'
@@ -104,16 +104,55 @@ repository:
 
   support:
     patterns:
-    - name: support.type.asm
-      match: (?i)\b(s?byte|([doqtyz]|dq|s[dq]?)?word|(d|res)[bdoqtwyz]?|ddq|incbin|equ|times|(end|i)?struc|at|iend)\b
-    - name: support.directive.asm
-      match: (?i)\b(\.?(alignb?|bits|cpu|fpu)|use(16|32|64))\b
-    - name: support.modifier.asm
-      match: \b(strict|nosplit|near|far|abs|rel|seg|wrt|absolute|common)\b
-    - name: support.prefix.asm
-      match: \b([ao](16|32|64))\b
-    - name: support.function.asm
-      match: \b__(utf((16|32)([lb]e)?)|float(8|16|32|64|80[me]|128[lh])|Infinity|[QS]?NaN)__\b
+    # Initialized & uninitialized data: http://www.nasm.us/doc/nasmdoc3.html#section-3.2.1
+    - name: storage.type.asm.x86_64
+      match: '(?i)\b(?:s?byte|(?:[doqtyz]|dq|s[dq]?)?word|(?:d|res)[bdoqtwyz]|ddq)\b'
+    - name: support.function.asm.x86_64
+      match: '(?i)\b(?:incbin|equ|times)\b'
+    - name: storage.modifier.asm.x86_64
+      match: '(?i)\b(?:strict|nosplit|near|far|abs|rel)\b'
+    - name: storage.modifier.prefix.asm.x86_64
+      match: '(?i)\b(?:[ao](?:16|32|64))\b'
+    - name: storage.modifier.prefix.asm.x86_64
+      match: '(?i)\b(?:rep(?:n?[ez])?|lock|xacquire|xrelease|(?:no)?bnd)\b'
+    - match: '{(vex[23]|evex)}'
+      captures:
+        '1': {name: storage.modifier.prefix.vex.asm.x86_64}
+    - match: '{(k[1-7])}'
+      captures:
+        '1': {name: storage.modifier.opmask.asm.x86_64}
+    - match: '{(1to(?:8|16))}'
+      captures:
+        '1': {name: storage.modifier.precision.asm.x86_64}
+    - match: '{(z|(?:r[nudz]-)?sae)}'
+      captures:
+        '1': {name: storage.modifier.rounding.asm.x86_64}
+    # http://www.nasm.us/doc/nasmdoc7.html#section-7.4.6
+    - name: support.constant.asm.x86_64
+      match: '\.\.(?:start|imagebase|tlvp|got(?:pc(?:rel)?|(?:tp)?off)?|plt|sym|tlsie)\b'
+    - name: support.function.asm.x86_64
+      match: '\b__(?:utf(?:(?:16|32)(?:[lb]e)?)|float(?:8|16|32|64|80[me]|128[lh])|Infinity|[QS]?NaN)__\b'
+    # http://www.nasm.us/doc/nasmdoc4.html#section-4.11
+    - name: support.function.asm.x86_64
+      match: '\b__NASM_(?:MAJOR|(?:SUB)?MINOR|SNAPSHOT|VER(?:SION_ID)?)__\b'
+    - name: support.function.asm.x86_64
+      match: '\b___NASM_PATCHLEVEL__\b'
+    - name: support.function.asm.x86_64
+      match: '\b__(?:FILE|LINE|BITS|OUTPUT_FORMAT)__\b'
+    - name: support.function.asm.x86_64
+      match: '\b__(?:(?:UTC_)?(?:DATE|TIME)(?:_NUM)?|POSIX_TIME)__\b'
+    - name: support.function.asm.x86_64
+      match: '\b__USE_(?:ALTREG|SMARTALIGN|FP|IFUNC)__\b'
+    - name: invalid.deprecated.support.constant.altreg.asm.x86_64
+      match: '\b__PASS__\b'
+    - name: support.constant.smartalign.asm.x86_64
+      match: '\b__ALIGNMODE__\b'
+    - name: support.constant.fp.asm.x86_64
+      match: '\b(?:Inf|[QS]?NaN)\b'
+    - name: support.function.fp.asm.x86_64
+      match: '\b(?:float(?:8|16|32|64|80[me]|128[lh]))\b'
+    - name: support.function.ifunc.asm.x86_64
+      match: '(?i)\bilog2(?:[ewfc]|[fc]w)?\b'
  
   comments:
     patterns:
