@@ -28,11 +28,11 @@
 		</dict>
 		<dict>
 			<key>include</key>
-			<string>#support</string>
+			<string>#entities</string>
 		</dict>
 		<dict>
 			<key>include</key>
-			<string>#entities</string>
+			<string>#support</string>
 		</dict>
 		<dict>
 			<key>include</key>
@@ -212,7 +212,7 @@
 						<key>2</key>
 						<dict>
 							<key>name</key>
-							<string>entity.name.constant.special.asm.x86_64</string>
+							<string>entity.name.function.special.asm.x86_64</string>
 						</dict>
 						<key>3</key>
 						<dict>
@@ -236,7 +236,7 @@
 						<key>2</key>
 						<dict>
 							<key>name</key>
-							<string>entity.name.constant.asm.x86_64</string>
+							<string>entity.name.function.asm.x86_64</string>
 						</dict>
 						<key>3</key>
 						<dict>
@@ -245,7 +245,7 @@
 						</dict>
 					</dict>
 					<key>match</key>
-					<string>(?:(\.)?|\b)((?:[[:alpha:]_?](?:[[:alnum:]_$#@~.?]*)))(?:(\:)?|\b)</string>
+					<string>(?:(\.)?|\b)((?:[[:alpha:]_?](?:[[:alnum:]_$#@~.?]*)))(?:(\:))</string>
 					<key>name</key>
 					<string>entity.name.function.asm.x86_64</string>
 				</dict>
@@ -260,7 +260,7 @@
 						<key>2</key>
 						<dict>
 							<key>name</key>
-							<string>entity.name.constant.asm.x86_64</string>
+							<string>entity.name.function.asm.x86_64</string>
 						</dict>
 						<key>3</key>
 						<dict>
@@ -284,7 +284,7 @@
 						<key>2</key>
 						<dict>
 							<key>name</key>
-							<string>invalid.illegal.entity.name.constant.asm.x86_64</string>
+							<string>invalid.illegal.entity.name.function.asm.x86_64</string>
 						</dict>
 						<key>3</key>
 						<dict>
@@ -293,52 +293,9 @@
 						</dict>
 					</dict>
 					<key>match</key>
-					<string>(?:(\.)?|\b)([0-9$@~](?:[[:alnum:]_$#@~.?]*))(?:(\:)?|\b)</string>
+					<string>(?:(\.)?|\b)([0-9$@~](?:[[:alnum:]_$#@~.?]*))(?:(\:))</string>
 					<key>name</key>
-					<string>entity.name.function.asm.x86_64</string>
-				</dict>
-				<dict>
-					<key>captures</key>
-					<dict>
-						<key>2</key>
-						<dict>
-							<key>name</key>
-							<string>punctuation.definition.variable.preprocessor.asm.x86_64 keyword.control.preprocessor.asm.x86_64</string>
-						</dict>
-						<key>3</key>
-						<dict>
-							<key>name</key>
-							<string>variable.other.preprocessor.asm.x86_64</string>
-						</dict>
-					</dict>
-					<key>match</key>
-					<string>((%)(\d+))</string>
-					<key>name</key>
-					<string>invalid.illegal.meta.preprocessor.asm.x86_64</string>
-				</dict>
-				<dict>
-					<key>captures</key>
-					<dict>
-						<key>2</key>
-						<dict>
-							<key>name</key>
-							<string>punctuation.definition.keyword.preprocessor.asm.x86_64 keyword.control.preprocessor.asm.x86_64</string>
-						</dict>
-						<key>3</key>
-						<dict>
-							<key>name</key>
-							<string>entity.name.constant.special.asm.x86_64</string>
-						</dict>
-						<key>4</key>
-						<dict>
-							<key>name</key>
-							<string>punctuation.separator.asm.x86_64</string>
-						</dict>
-					</dict>
-					<key>match</key>
-					<string>((%%)((?:[[:alpha:]_?](?:[[:alnum:]_$#@~.?]*)))(?:(\:)?|\b))</string>
-					<key>name</key>
-					<string>invalid.illegal.meta.preprocessor.asm.x86_64</string>
+					<string>invalid.illegal.entity.name.function.asm.x86_64</string>
 				</dict>
 			</array>
 		</dict>

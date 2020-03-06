@@ -8,8 +8,8 @@ patterns:
 - include: '#registers'
 - include: '#mnemonics'
 - include: '#constants'
-- include: '#support'
 - include: '#entities'
+- include: '#support'
 - include: '#comments'
 - include: '#preprocessor'
 - include: '#strings'
@@ -65,42 +65,30 @@ repository:
     - name: text.variable
       match: (\$\w+)\b
     #labels
-    - name: entity.name.function.asm.x86_64
-      match: '(\.\.@)((?:[[:alpha:]_?](?:[[:alnum:]_$#@~.?]*)))(?:(\:)?|\b)'
+    - match: '(\.\.@)((?:[[:alpha:]_?](?:[[:alnum:]_$#@~.?]*)))(?:(\:)?|\b)'
+      name: entity.name.function.asm.x86_64
       captures:
         '1': {name: punctuation.separator.asm.x86_64 storage.modifier.asm.x86_64}
-        '2': {name: entity.name.constant.special.asm.x86_64}
+        '2': {name: entity.name.function.special.asm.x86_64}
         '3': {name: punctuation.separator.asm.x86_64}
-    - name: entity.name.function.asm.x86_64
-      match: '(?:(\.)?|\b)((?:[[:alpha:]_?](?:[[:alnum:]_$#@~.?]*)))(?:(\:)?|\b)'
+    - match: '(?:(\.)?|\b)((?:[[:alpha:]_?](?:[[:alnum:]_$#@~.?]*)))(?:(\:))'
+      name: entity.name.function.asm.x86_64
       captures:
         '1': {name: punctuation.separator.asm.x86_64 storage.modifier.asm.x86_64}
-        '2': {name: entity.name.constant.asm.x86_64}
+        '2': {name: entity.name.function.asm.x86_64}
         '3': {name: punctuation.separator.asm.x86_64}
-    - name: entity.name.function.asm.x86_64
-      match: '(\.)([0-9]+(?:[[:alnum:]_$#@~.?]*))(?:(\:)?|\b)'
+    - match: '(\.)([0-9]+(?:[[:alnum:]_$#@~.?]*))(?:(\:)?|\b)'
+      name: entity.name.function.asm.x86_64
       captures:
         '1': {name: punctuation.separator.asm.x86_64 storage.modifier.asm.x86_64}
-        '2': {name: entity.name.constant.asm.x86_64}
+        '2': {name: entity.name.function.asm.x86_64}
         '3': {name: punctuation.separator.asm.x86_64}
-    - name: entity.name.function.asm.x86_64
-      match: '(?:(\.)?|\b)([0-9$@~](?:[[:alnum:]_$#@~.?]*))(?:(\:)?|\b)'
+    - match: '(?:(\.)?|\b)([0-9$@~](?:[[:alnum:]_$#@~.?]*))(?:(\:))'
+      name: invalid.illegal.entity.name.function.asm.x86_64
       captures:
         '1': {name: punctuation.separator.asm.x86_64 storage.modifier.asm.x86_64}
-        '2': {name: invalid.illegal.entity.name.constant.asm.x86_64}
+        '2': {name: invalid.illegal.entity.name.function.asm.x86_64}
         '3': {name: punctuation.separator.asm.x86_64}
-    - name: invalid.illegal.meta.preprocessor.asm.x86_64
-      match: '((%)(\d+))'
-      captures:
-        #'1':{name:  meta.preprocessor.asm.x86_64}
-        '2': {name: punctuation.definition.variable.preprocessor.asm.x86_64 keyword.control.preprocessor.asm.x86_64}
-        '3': {name: variable.other.preprocessor.asm.x86_64}
-    - name: invalid.illegal.meta.preprocessor.asm.x86_64
-      match: '((%%)((?:[[:alpha:]_?](?:[[:alnum:]_$#@~.?]*)))(?:(\:)?|\b))'
-      captures:
-        '2': {name: punctuation.definition.keyword.preprocessor.asm.x86_64 keyword.control.preprocessor.asm.x86_64}
-        '3': {name: entity.name.constant.special.asm.x86_64}
-        '4': {name: punctuation.separator.asm.x86_64}
 
   support:
     patterns:
