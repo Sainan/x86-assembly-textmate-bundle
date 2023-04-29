@@ -297,6 +297,25 @@
 					<key>name</key>
 					<string>invalid.illegal.entity.name.function.asm.x86_64</string>
 				</dict>
+				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>entity.name.function.asm.x86_64</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>storage.type.function.asm.x86_64</string>
+						</dict>
+					</dict>
+					<key>match</key>
+					<string>([[:alnum:]_$#@~.?]+) (PROC|ENDP)</string>
+					<key>name</key>
+					<string>meta.function.asm.x86_64</string>
+				</dict>
 			</array>
 		</dict>
 		<key>mnemonics</key>
