@@ -68,6 +68,12 @@
 					<string>comment.block</string>
 				</dict>
 				<dict>
+					<key>match</key>
+					<string>END|\.(CODE|DATA)</string>
+					<key>name</key>
+					<string>comment.region</string>
+				</dict>
+				<dict>
 					<key>begin</key>
 					<string>^\s*[\#%]\s*if\s+0\b</string>
 					<key>end</key>
